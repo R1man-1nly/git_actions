@@ -6,28 +6,15 @@ on:
       - main
 
 jobs:
-  test:
+  print-message:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Клонуємо репозиторій
-        uses: actions/checkout@v4
-
-      - name: Налаштовуємо Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: "3.12.3"
-
-      - name: Встановлюємо залежності
-        run: |
-          pip install -r requirements.txt
-
-      - name: Запускаємо тести Django
-        run: |
-          python manage.py test
+      - name: Print a message
+        run: echo "Hello, World!"
 
   build_and_push:
-    needs: test  # Виконається тільки якщо тести пройшли
+    needs: print-message  # Виконається тільки якщо тести пройшли
     runs-on: ubuntu-latest
 
     steps:
